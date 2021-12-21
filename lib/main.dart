@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.light,
       darkTheme: ThemeData(primarySwatch: Colors.cyan),
       routes: {
         "/": (context) => LoginPage(),
