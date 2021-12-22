@@ -38,10 +38,11 @@ class LoginPage extends StatelessWidget {
             ),
             SizedBox(height: 20),
             ElevatedButton(
-                child: Text("Login"), onPressed: () {}, style: ButtonStyle(
-                  foregroundColor: MaterialStateProperty.,
-
-                ))
+                child: Text("Login"),
+                onPressed: () {
+                  print("Flutter is Amamzing");
+                },
+                style: TextButton.styleFrom())
           ],
         ));
   }
