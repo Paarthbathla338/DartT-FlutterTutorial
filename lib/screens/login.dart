@@ -10,14 +10,14 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   String name = "";
-  bool changeButton=false;
+  bool changeButton = false;
   @override
   Widget build(BuildContext context) {
     return Material(
         color: Colors.white,
         child: Column(
           children: [
-            Image.asset("assets/images/authimg.png", fit: BoxFit.cover),
+            Image.asset("assets/images/hey.png", fit: BoxFit.cover),
             SizedBox(height: 20),
             Text("Welcome $name",
                 style: TextStyle(
@@ -50,31 +50,35 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             SizedBox(height: 40),
-            InkWell(
-              onTap: () async {
-              
-                setState(()  {
-                  changeButton=true;
-                  
-                });
-                await Future.delayed(Duration(seconds: 1));
-                Navigator.pushNamed(context, MyRoutes.loginRoute);
-
-              },
-              child: AnimatedContainer(
-                duration: Duration(seconds: 1),
-                  width: changeButton?100:150,
-                  height: changeButton?70:50,
+            Material(
+              color: changeButton ? Colors.green : Colors.deepPurple,
+              borderRadius: BorderRadius.circular(changeButton ? 70 : 8),
+              child: InkWell(
+                splashColor: Colors.green,
+                onTap: () async {
+                  setState(() {
+                    changeButton = true;
+                  });
+                  await Future.delayed(Duration(seconds: 2));
+                  await Navigator.pushNamed(context, MyRoutes.homeRoute);
+                  setState(() {
+                    changeButton = false;
+                  });
+                },
+                child: AnimatedContainer(
+                  duration: Duration(seconds: 1),
+                  width: changeButton ? 70 : 150,
+                  height: changeButton ? 70 : 50,
                   alignment: Alignment.center,
-                  child: changeButton?Icon(Icons.done,color:Colors.white):Text("Login",
-                      style: TextStyle(
-                          color:Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18)),
-                  decoration: BoxDecoration(
-                      color: changeButton?Colors.green: Colors.deepPurple,
-                      shape:changeButton?BoxShape.circle:BoxShape.rectangle,
-                      )),
+                  child: changeButton
+                      ? Icon(Icons.done, color: Colors.white)
+                      : Text("Login",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18)),
+                ),
+              ),
             )
             // ElevatedButton(
             //     child: Text("Login"),
