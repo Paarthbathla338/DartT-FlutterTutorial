@@ -1,3 +1,4 @@
+import 'package:firstapp/utils/routes.dart';
 import "package:flutter/material.dart";
 
 class LoginPage extends StatelessWidget {
@@ -39,10 +40,10 @@ class LoginPage extends StatelessWidget {
             SizedBox(height: 40),
             ElevatedButton(
                 child: Text("Login"),
-                onPressed: () {
-                  print("Flutter is Amamzing");
-                },
-                style: TextButton.styleFrom(minimumSize: Size(150, 40)))
+                style: TextButton.styleFrom(minimumSize: Size(150, 40)),
+                onPressed: () { 
+                  Navigator.pushNamed(context, MyRoutes.homeRoute);
+                }),
           ],
         ));
   }
